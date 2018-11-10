@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<openerp>
+<data>
+	<record model="ir.ui.view" id="view_academy_course_form">
+        <field name="name">academy.course.form</field>
+        <field name="model">academy.course</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="academy.course">
+                <field name="name" select="1" on_change="onchange_name(name, description)"/>
+                <field name="course_code" select="0" />
+                <field name="difficulty" select="0"/>
+                <field name="hours" select="0"/>
+                <field name="description" select="0"/>
+                <field name="state" select="0"/>
+                <field name="classroom_id" select="0"/>
+                <field name="category_id" select="0"/>
+            </form>
+        </field>
+    </record>
+	<record model="ir.ui.view" id="view_academy_course_tree">
+        <field name="name">academy.course.tree</field>
+        <field name="model">academy.course</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="academy.course">
+                <field name="code_name"/>
+                <field name="name"/>
+                <field name="difficulty"/>
+                <field name="hours"/>
+                <field name="description"/>
+                <field name="state"/>
+                <field name="classroom_id"/>
+                <field name="category_id"/>
+            </tree>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="action_academy_courses_event">
+        <field name="name">Courses</field>
+        <field name="res_model">academy.course</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.ui.view" id="view_academy_classroom_form">
+        <field name="name">academy.classroom.form</field>
+        <field name="model">academy.classroom</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="academy.classroom">
+                <field name="name" select="1"/>
+                <field name="address_id" select="0"/>
+                <field name="phone" select="0"/>
+                <field name="street" select="0"/>
+                <field name="city" select="0"/>
+                <field name="capacity" select="0"/>
+                <field name="state" select="0"/>
+                <field name="course_id" colspan="4" select="0"/>
+            </form>
+        </field>
+    </record>
+	<record model="ir.ui.view" id="view_academy_classroom_tree">
+        <field name="name">academy.classroom.tree</field>
+        <field name="model">academy.classroom</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="academy.classroom">
+                <field name="name"/>
+                <field name="address_id"/>
+                <field name="capacity"/>
+                <field name="state"/>
+                <field name="course_id"/>
+            </tree>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="action_academy_classroom_event">
+        <field name="name">Classroom</field>
+        <field name="res_model">academy.classroom</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.ui.view" id="view_academy_categories_form">
+        <field name="name">academy.category.form</field>
+        <field name="model">academy.category</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="academy.categories">
+                <field name="name" select="1"/>
+                <field name="courses_id" colspan="4" select="0"/>
+            </form>
+        </field>
+    </record>
+	<record model="ir.ui.view" id="view_academy_categories_tree">
+        <field name="name">academy.category.tree</field>
+        <field name="model">academy.category</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="academy.categories">
+				<field name="name"/>
+                <field name="courses_id"/>
+            </tree>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="action_academy_categories_event">
+        <field name="name">Categories</field>
+        <field name="res_model">academy.category</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+	<menuitem name="Academy" id="menu_academy" />
+	<menuitem name="Courses" id="menu_academy_courses" action="action_academy_courses_event" parent="menu_academy"/>
+	<menuitem name="Classroom" id="menu_academy_classroom" action="action_academy_classroom_event" parent="menu_academy"/>
+	<menuitem name="Courses Categories" id="menu_academy_categories" action="action_academy_categories_event" parent="menu_academy"/>
+	<menuitem name="Configuration" id="menu_configuration" parent="menu_academy"/>
+</data>
+</openerp>

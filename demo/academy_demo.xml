@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data noupdate="0">
+<record id="idRoom1" model="academy.classroom">
+	<field name="name">Aula d'Informatica</field>
+	<field name="address_id" ref="base.main_company"/>
+	<field name="capacity">30</field>
+	<field name="state">usable</field>
+</record>
+<record id="idRoom2" model="academy.classroom">
+	<field name="name">Aula de Musica</field>
+	<field name="address_id" ref="base.main_company"/>
+	<field name="capacity">20</field>
+	<field name="state">under_construction</field>
+</record>
+<record id="idRoom3" model="academy.classroom">
+	<field name="name">Aula d'Esports</field>
+	<field name="address_id" ref="base.main_company"/>
+	<field name="capacity">50</field>
+	<field name="state">usable</field>
+</record>
+<record id="catId1" model="academy.category">
+	<field name="name">fun</field>
+	<field name="courses_id" eval= "[(4,ref('idCourse1')),(4,ref('idCourse3'))]"/>
+</record>
+<record id="catId2" model="academy.category">
+	<field name="name">not fun</field>
+	<field name="courses_id" eval= "[(4,ref('idCourse2'))]"/>
+</record>
+<record id="idCourse1" model="academy.course">
+	<field name="course_code">1</field>
+	<field name="name">Programacio</field>
+	<field name="difficulty">easy</field>
+	<field name="hours">15</field>
+	<field name="classroom_id" ref="base.main_company"/>
+	<field name="category_id" ref="catId1"/>
+</record>
+<record id="idCourse2" model="academy.course">
+	<field name="course_code">2</field>
+	<field name="name">Musica</field>
+	<field name="difficulty">insane</field>
+	<field name="hours">20</field>
+	<field name="classroom_id" ref="base.main_company"/>
+	<field name="category_id" ref="carId2"/>
+</record>
+<record id="idCourse3" model="academy.course">
+	<field name="course_code">3</field>
+	<field name="name">Esport</field>
+	<field name="difficulty">easy</field>
+	<field name="hours">25</field>
+	<field name="classroom_id" ref="base.main_company"/>
+	<field name="category_id" ref="catId1"/>
+</record>
+</data>
+</openerp>

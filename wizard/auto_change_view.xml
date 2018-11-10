@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<openerp>
+<data>
+  <record model="ir.ui.view" id="view_academy_manage_classroom_capacity_capacity">
+    <field name="name">academy.assign.classroom.capacity.capacity</field>
+    <field name="model">academy.auto_change</field>
+    <field name="type">form</field>
+    <field name="arch" type="xml">
+      <form string="Assignment capacity to classrooms whose capacity is...">
+        <group col="4" colspan="4" attrs="{'invisible':[('state','=','done')]}">
+          <label string="Enter the capacity to be assigned to classrooms whose capacity is...:" colspan="4"/>
+          <newline />
+          <field name="classroom_capacity"/>
+          <field name="new_capacity"/>
+        </group>
+        <group col="4" colspan="4" attrs="{'invisible':[('state','=','init')]}">
+          <field name="info_updates"/>
+        </group>
+        <separator colspan="4"/>
+        <group col="2" colspan="2">
+          <field name="state" widget="statusbar" />
+        </group>
+        <group col="2" colspan="2">
+          <button string="Cancel" special="cancel" icon="gtk-cancel" states="init" />
+          <button string="Assign" name="assign_classroom_capacity_capacity" type="object" icon="gtk-ok" states="init" />
+          <button string="Close" special="cancel" icon="gtk-ok" states="done" />
+        </group>
+      </form>
+    </field>
+  </record>
+  <record model="ir.actions.act_window" id="action_academy_manage_classroom_capacity_capacity">
+    <field name="name">Assign capacity to all classrooms whose capacity is...</field>
+    <field name="res_model">academy.auto_change</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">form</field>
+    <field name="view_id" ref="view_academy_manage_classroom_capacity_capacity"/>
+    <field name="target">new</field>
+  </record>
+
+  <menuitem name="Assign capacity to all classrooms whose capacity is.." id="menu_academy_classroom_assign_capacity_capacity" action="action_academy_manage_classroom_capacity_capacity" parent="menu_configuration"/>
+
+</data>
+</openerp>
